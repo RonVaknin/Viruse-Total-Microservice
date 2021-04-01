@@ -1,1 +1,1 @@
-exports ='fileController';
+module.exports ='fileController';
