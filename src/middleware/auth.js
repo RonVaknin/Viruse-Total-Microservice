@@ -10,7 +10,6 @@ module.exports = (req, res, next) => {
     req.headers["x-apikey"] ||
     req.headers["vt-token"] ||
     process.env.VT_API_TOKEN;
-
   if (!vt_token) {
     res
       .status(401)
@@ -19,6 +18,5 @@ module.exports = (req, res, next) => {
       );
     return;
   }
-  req.token = vt_token;
   next();
 };
