@@ -4,18 +4,11 @@
  * VT_API_TOKEN in local evironment variables
  * if all 3 are missing, an authentication error sent to client
  */
+let vt_token = process.env.VT_API_TOKEN;
 
 module.exports = (req, res, next) => {
-  let vt_token =
-    req.headers["x-apikey"] ||
-    req.headers["vt-token"] ||
-    process.env.VT_API_TOKEN;
   if (!vt_token) {
-    res
-      .status(401)
-      .send(
-        "Unauthorized api key, please add to request.vt_token or request.key the token"
-      );
+    res.status(401).send("Unauthorized api key, please add to environment var");
     return;
   }
   next();
