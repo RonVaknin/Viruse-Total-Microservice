@@ -13,7 +13,8 @@ module.exports = pings;
  * @param {function(error,stdout,stderr)} callback
  */
 function ping(url, callback) {
-  let noProtocolUrl = url.split("//");
-  noProtocolUrl = noProtocolUrl[noProtocolUrl.length - 1];
-  let p = exec(`ping -n 3 -w 1500 ${noProtocolUrl}`, callback);
+  let noQueryUrl = url.split("?");
+  let noProtocolUrl = noQueryUrl[0].split("//");
+  let rootUrl = noProtocolUrl[noProtocolUrl.length - 1].split("/");
+  let p = exec(`ping -n 3 -w 1500 ${rootUrl[0]}`, callback);
 }

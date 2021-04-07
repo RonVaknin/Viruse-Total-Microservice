@@ -12,11 +12,10 @@ const services = {
       data: querystring.stringify(data),
       url: path,
     };
-    console.log(req.body);
-    if (req.headers["x-apikey"] || req.headers["vt-token"]) {
-      let head = req.headers["x-apikey"] || req.headers["vt-token"];
-      options.headers = { "x-apikey": head };
-    }
+    // if (req.headers["x-apikey"] || req.headers["vt-token"]) {
+    //   let head = req.headers["x-apikey"] || req.headers["vt-token"];
+    //   options.headers = { "x-apikey": head };
+    // }
     axios(options)
       .then((response) => {
         res.send(response.data);

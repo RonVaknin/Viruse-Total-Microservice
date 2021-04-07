@@ -85,7 +85,7 @@ let controllers = {
           });
           return;
         }
-        urlService.analyse(req, res, next);
+        fileService.analyse(req, res, next);
       });
     }
   },
